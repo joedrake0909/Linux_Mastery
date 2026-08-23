@@ -114,7 +114,202 @@ Successfully installed and verified:
 
 # 2. User and Group Management
 
-*To be completed*
+## Initial Environment Assessment
+
+Before creating users and groups, the system was inspected.
+
+### Existing Groups
+
+```bash
+getent group engineers
+getent group sales
+getent group hr
+```
+
+### Findings
+
+The required groups already existed in the lab environment and had users assigned from a previous session.
+
+### Existing Users
+
+```bash
+id alice
+id bob
+id carol
+id dave
+id eve
+```
+
+### Findings
+
+- alice already existed
+- bob already existed
+- carol already existed
+- dave did not exist
+- eve did not exist
+
+The existing configuration did not match the project requirements.
+
+---
+
+## Environment Cleanup
+
+To ensure the project matched the capstone requirements, the existing users and groups were removed and recreated from scratch.
+
+### Commands
+
+```bash
+sudo userdel -r alice
+sudo userdel -r bob
+sudo userdel -r carol
+
+sudo groupdel engineers
+sudo groupdel sales
+sudo groupdel hr
+```
+
+### Result
+
+The environment was reset to a clean state before continuing with the official project setup.
+
+---
+
+## Creating Department Groups
+
+Created groups for the three departments required by the project.
+
+### Commands
+
+```bash
+sudo groupadd engineers
+sudo groupadd sales
+sudo groupadd hr
+```
+
+### Verification
+
+```bash
+getent group engineers
+getent group sales
+getent group hr
+```
+
+Output:
+
+```text
+engineers:x:1018:
+sales:x:1019:
+hr:x:1020:
+```
+
+### Result
+
+Successfully created:
+
+- engineers
+- sales
+- hr
+
+---
+
+## Creating Users
+
+Created five user accounts with home directories.
+
+### Commands
+
+```bash
+sudo useradd -m alice
+sudo useradd -m bob
+sudo useradd -m carol
+sudo useradd -m dave
+sudo useradd -m eve
+```
+
+### Verification
+
+```bash
+id alice
+id bob
+id carol
+id dave
+id eve
+```
+
+Output:
+
+```text
+uid=1015(alice) gid=1021(alice) groups=1021(alice)
+uid=1016(bob) gid=1022(bob) groups=1022(bob)
+uid=1017(carol) gid=1023(carol) groups=1023(carol)
+uid=1018(dave) gid=1024(dave) groups=1024(dave)
+uid=1019(eve) gid=1025(eve) groups=1025(eve)
+```
+
+### Password Configuration
+
+Passwords were configured for all user accounts using:
+
+```bash
+sudo passwd alice
+sudo passwd bob
+sudo passwd carol
+sudo passwd dave
+sudo passwd eve
+```
+
+---
+
+## Assigning Users to Department Groups
+
+### Commands
+
+```bash
+sudo usermod -aG engineers alice
+sudo usermod -aG engineers bob
+
+sudo usermod -aG sales carol
+sudo usermod -aG sales dave
+
+sudo usermod -aG hr eve
+```
+
+### Purpose
+
+Assigned users to their respective department groups to enable group-based permission management.
+
+### Verification
+
+```bash
+groups alice
+groups bob
+groups carol
+groups dave
+groups eve
+```
+
+Output:
+
+```text
+alice : alice engineers
+bob : bob engineers
+carol : carol sales
+dave : dave sales
+eve : eve hr
+```
+
+### Result
+
+Users were successfully assigned to their respective department groups:
+
+| User | Department Group |
+|------|------------------|
+| alice | engineers |
+| bob | engineers |
+| carol | sales |
+| dave | sales |
+| eve | hr |
+```
 
 ---
 

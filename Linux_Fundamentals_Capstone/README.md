@@ -63,9 +63,54 @@ lscpu
 
 # 1. System Update and Package Installation
 
-*To be completed*
+Updated package indexes and installed the tools required for the office server simulation.
+
+## Commands
+
+```bash
+sudo apt update
+sudo apt install nginx openssh-server git curl tree -y
+```
+
+## Verification
+
+### Nginx Version
+
+```bash
+nginx -v
+```
+
+Output:
+
+```text
+nginx version: nginx/1.28.3 (Ubuntu)
+```
+
+### OpenSSH Version
+
+```bash
+ssh -V
+```
+
+Output:
+
+```text
+OpenSSH_10.2p1 Ubuntu-2ubuntu3.5, OpenSSL 3.5.5 27 Jan 2026
+```
+
+## Result
+
+Successfully installed and verified:
+
+- Nginx
+- OpenSSH Server
+- Git
+- Curl
+- Tree
 
 ---
+
+
 
 # 2. User and Group Management
 

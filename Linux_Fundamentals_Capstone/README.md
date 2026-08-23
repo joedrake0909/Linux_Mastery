@@ -2,7 +2,7 @@
 
 ## Author
 
-Joseph Biossey
+Joseph Apelete Biossey
 
 ## Date
 
@@ -28,12 +28,38 @@ The project demonstrates:
 
 | Item | Details |
 |--------|---------|
-| OS | |
-| VM Platform | |
-| RAM | |
-| CPU | |
+| OS | Ubuntu 26.04 LTS |
+| VM Platform | Bio-Lab VM |
+| RAM | 3.3 GiB |
+| Swap | 3.8 GiB |
+| CPU | Intel Core i7-8550U @ 1.80 GHz |
+| vCPUs | 2 |
+| Architecture | x86_64 |
+
+
+### System Information Commands
+
+```bash
+uname -a
+lsb_release -a
+free -h
+lscpu
+```
+
+### Key Findings
+
+- Operating System: Ubuntu 26.04 LTS
+- Kernel: 7.0.0-28-generic
+- Architecture: x86_64
+- Memory: 3.3 GiB RAM
+- Virtualization Platform: VMware
+- Processor: Intel Core i7-8550U @ 1.80 GHz
+- Allocated CPUs: 2
+```
 
 ---
+
+
 
 # 1. System Update and Package Installation
 

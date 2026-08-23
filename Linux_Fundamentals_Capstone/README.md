@@ -315,13 +315,127 @@ Users were successfully assigned to their respective department groups:
 
 # 3. Directory Structure
 
-*To be completed*
+Created department shared directories under `/srv/company`.
+
+## Commands
+
+```bash
+sudo mkdir -p /srv/company/{engineering,sales,hr}
+```
+
+## Group Ownership
+
+```bash
+sudo chgrp engineers /srv/company/engineering
+sudo chgrp sales /srv/company/sales
+sudo chgrp hr /srv/company/hr
+```
+
+## Verification
+
+```bash
+tree /srv/company
+```
+
+Output:
+
+```text
+/srv/company
+├── engineering
+├── hr
+└── sales
+```
+
+### Notes
+
+During verification, additional directories and files from previous lab exercises were found and removed:
+
+- /srv/company/shared
+- /srv/company/engineering/server_info.txt
+- /srv/company/engineering/test_alice.txt
+
 
 ---
 
 # 4. Permissions Configuration
 
-*To be completed*
+Configured department folders and private user directories.
+
+## Shared Department Folders
+
+Commands:
+
+```bash
+sudo chmod 775 /srv/company/engineering
+sudo chmod 775 /srv/company/sales
+sudo chmod 775 /srv/company/hr
+```
+
+Verification:
+
+```bash
+ls -ld /srv/company/*
+```
+
+Output:
+
+```text
+drwxrwxr-x engineering
+drwxrwxr-x hr
+drwxrwxr-x sales
+```
+
+Meaning:
+
+- Owner: Read, Write, Execute
+- Group: Read, Write, Execute
+- Others: Read, Execute
+
+## Private User Directories
+
+Commands:
+
+```bash
+sudo -u alice mkdir /home/alice/private
+sudo -u bob mkdir /home/bob/private
+sudo -u carol mkdir /home/carol/private
+sudo -u dave mkdir /home/dave/private
+sudo -u eve mkdir /home/eve/private
+```
+
+```bash
+sudo chmod 700 /home/alice/private
+sudo chmod 700 /home/bob/private
+sudo chmod 700 /home/carol/private
+sudo chmod 700 /home/dave/private
+sudo chmod 700 /home/eve/private
+```
+
+Verification:
+
+```bash
+ls -ld /home/alice/private
+ls -ld /home/bob/private
+ls -ld /home/carol/private
+ls -ld /home/dave/private
+ls -ld /home/eve/private
+```
+
+Output:
+
+```text
+drwx------ /home/alice/private
+drwx------ /home/bob/private
+drwx------ /home/carol/private
+drwx------ /home/dave/private
+drwx------ /home/eve/private
+```
+
+Meaning:
+
+- Owner: Full access
+- Group: No access
+- Others: No access
 
 ---
 

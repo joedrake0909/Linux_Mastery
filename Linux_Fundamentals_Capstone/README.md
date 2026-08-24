@@ -692,24 +692,90 @@ This demonstrates proper implementation of group-based access control.
 
 ---
 
-# 8. Log Inspection and Grep
+# 8. System Information Report
 
-*To be completed*
+Generated a server information report.
+
+## Commands
+
+```bash
+hostname
+uname -a
+free -h
+```
+
+## Purpose
+
+Collected system details for administrative reporting and troubleshooting.
+```
 
 ---
 
-# 9. File Operations
+# 9. Log Monitoring
 
-*To be completed*
+Inspected service logs using journalctl.
+
+## Commands
+
+```bash
+sudo journalctl -u nginx --no-pager -n 10
+sudo journalctl -u ssh --no-pager -n 10
+```
+
+## Purpose
+
+Reviewed service activity and verified successful operations through system logs.
+```
 
 ---
 
-# Troubleshooting
+# 10. Final Verification
 
-*To be completed*
+| Requirement | Status |
+|------------|---------|
+| Ubuntu Server Installed | ✅ |
+| Nginx Installed | ✅ |
+| OpenSSH Installed | ✅ |
+| Git Installed | ✅ |
+| Department Groups Created | ✅ |
+| Users Created | ✅ |
+| User Group Assignment Completed | ✅ |
+| Shared Directories Created | ✅ |
+| Permissions Configured | ✅ |
+| Private Directories Created | ✅ |
+| Nginx Managed with systemctl | ✅ |
+| SSH Login Tested | ✅ |
+| Access Control Verified | ✅ |
+| Log Inspection Completed | ✅ |
+```
 
 ---
 
-# Conclusion
+# Lessons Learned
 
-*To be completed*
+Through this project I learned how to:
+
+- Create and manage Linux users and groups
+- Configure group-based permissions
+- Create secure private directories
+- Manage services using systemctl
+- Configure and verify SSH access
+- Apply access control principles
+- Inspect system logs using journalctl
+- Document Linux administration tasks professionally
+- Use Git and GitHub for project tracking
+```
+
+---
+
+# Future Improvements
+
+Possible enhancements include:
+
+- Implementing SSH key authentication
+- Configuring a custom Nginx website
+- Automating setup with Bash scripts
+- Using Ansible for configuration management
+- Deploying the environment in AWS EC2
+- Adding monitoring with Prometheus and Grafana
+```

@@ -441,19 +441,254 @@ Meaning:
 
 # 5. Nginx Setup
 
-*To be completed*
+## Service Verification
+
+Checked the status of the Nginx service.
+
+### Command
+
+```bash
+sudo systemctl status nginx
+```
+
+### Result
+
+The Nginx service was running successfully.
+
+Status:
+
+```text
+Active: active (running)
+```
 
 ---
 
-# 6. SSH Configuration
+## Service Control Testing
 
-*To be completed*
+### Stop Service
+
+```bash
+sudo systemctl stop nginx
+```
+
+Verification:
+
+```bash
+sudo systemctl status nginx
+```
+
+Result:
+
+```text
+Active: inactive (dead)
+```
+
+This confirmed that the service stopped successfully.
 
 ---
 
-# 7. Permission Verification Tests
+### Start Service
 
-*To be completed*
+```bash
+sudo systemctl start nginx
+```
+
+Verification:
+
+```bash
+sudo systemctl status nginx
+```
+
+Result:
+
+```text
+Active: active (running)
+```
+
+This confirmed that the service started successfully.
+
+---
+
+### Restart Service
+
+```bash
+sudo systemctl restart nginx
+```
+
+Verification:
+
+```bash
+sudo systemctl status nginx
+```
+
+Result:
+
+```text
+Active: active (running)
+```
+
+The service restarted successfully.
+
+---
+
+## Skills Demonstrated
+
+- Service status inspection
+- Service start/stop operations
+- Service restart operations
+- Systemd service management
+
+---
+
+# 6. SSH Access Testing
+
+## SSH Service Verification
+
+Verified that the SSH service was running.
+
+### Command
+
+```bash
+sudo systemctl status ssh
+```
+
+### Result
+
+```text
+Active: active (running)
+```
+
+---
+
+## SSH Login Test as Alice
+
+### Command
+
+```bash
+ssh alice@localhost
+```
+
+### User Verification
+
+```bash
+whoami
+```
+
+Output:
+
+```text
+alice
+```
+
+### Group Verification
+
+```bash
+groups
+```
+
+Output:
+
+```text
+alice engineers
+```
+
+---
+
+## Department Directory Access Test
+
+Verified that Alice could access the engineering department directory.
+
+```bash
+ls -ld /srv/company/engineering
+```
+
+Output:
+
+```text
+drwxrwxr-x 2 root engineers ...
+```
+
+---
+
+## File Creation Test
+
+Created a test file within the engineering department directory.
+
+```bash
+touch /srv/company/engineering/test_alice.txt
+```
+
+Verification:
+
+```bash
+ls -l /srv/company/engineering
+```
+
+Output:
+
+```text
+-rw-rw-r-- 1 alice alice 0 Aug 24 04:00 test_alice.txt
+```
+
+### Result
+
+Alice successfully authenticated through SSH and created a file within her department's shared directory.
+
+---
+
+# 7. Access Control Testing
+
+## Cross-Department Access Test
+
+Verified that users cannot modify resources belonging to other departments.
+
+### Login as Carol
+
+```bash
+ssh carol@localhost
+```
+
+### User Verification
+
+```bash
+whoami
+```
+
+Output:
+
+```text
+carol
+```
+
+### Group Verification
+
+```bash
+groups
+```
+
+Output:
+
+```text
+carol sales
+```
+
+### Unauthorized Access Attempt
+
+```bash
+touch /srv/company/engineering/carol_test.txt
+```
+
+Output:
+
+```text
+touch: cannot touch '/srv/company/engineering/carol_test.txt': Permission denied
+```
+
+### Result
+
+The Linux permission system successfully prevented a Sales department user from creating files inside the Engineering department directory.
+
+This demonstrates proper implementation of group-based access control.
 
 ---
 

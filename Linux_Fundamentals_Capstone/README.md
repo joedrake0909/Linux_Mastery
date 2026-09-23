@@ -55,7 +55,6 @@ lscpu
 - Virtualization Platform: VMware
 - Processor: Intel Core i7-8550U @ 1.80 GHz
 - Allocated CPUs: 2
-```
 
 ---
 
